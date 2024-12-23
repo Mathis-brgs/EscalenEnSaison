@@ -1,0 +1,48 @@
+@font-face {
+  font-family: "Noyh";
+  src: url(../../assets/fonts/Noyh-Regular.ttf);
+}
+
+@font-face {
+  font-family: "Noyh";
+  src: url(../../assets/fonts/Noyh-Heavy.ttf);
+  font-weight: bold;
+}
+
+$font-1: "Noyh", sans-serif;
+
+$blue-1: #05203c;
+$bluewhite: #eff3f8;
+$grey: #c1c7cf;
+$light-grey: #c1c7cf2f;
+$white: rgb(255, 255, 255);
+
+@mixin verticalCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-weight: normal;
+  outline: none;
+}
+
+body {
+  background: $white;
+  font-family: $font-1;
+  // @include verticalCenter;
+}
+li {
+  list-style-type: none;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
