@@ -32,8 +32,20 @@ const cities = await getCity(db);
 console.table(cities);
 const CityCard = () => {
   return (
-    <div>
-      <div className="city-card"></div>
+    <div className="city-cards">
+      <ul>
+        {cities
+          .slice()
+          .reverse()
+          .map((cities, index) => (
+            <li key={index}>
+              <div className="cityImg">
+                <img src={cities.img} alt={cities.id} />
+                <h3 className="cityName">{cities.id}</h3>
+              </div>
+            </li>
+          ))}
+      </ul>
     </div>
   );
 };
