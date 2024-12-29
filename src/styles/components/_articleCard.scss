@@ -1,0 +1,63 @@
+.article-cards ul {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(300px, 1fr)
+  ); /* Colonnes dynamiques avec largeur minimale */
+  gap: 40px; /* Espacement entre les cartes */
+  justify-content: center; /* Centre la grille horizontalement */
+  list-style: none; /* Supprime les puces de liste */
+  padding: 0;
+  margin: 20px auto 40px; /* Centrage horizontal global */
+  max-width: 1000px; /* Largeur maximale pour centrer les lignes globalement */
+}
+
+/* Individual card */
+.card {
+  justify-content: center;
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  max-width: 300px;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+.articleImgContainer {
+  height: 150px;
+  overflow: hidden;
+}
+
+/* Card image */
+.articleImg {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.articleTxtContainer {
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.articleName {
+  font-size: 16px;
+  padding: 5px;
+
+  margin: 0 0 5px 0;
+  color: black;
+}
+
+.show-more-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

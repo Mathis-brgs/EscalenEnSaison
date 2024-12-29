@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { initializeApp } from "firebase/app";
 
 import { collection, getDocs, getFirestore } from "firebase/firestore";
@@ -17,35 +17,51 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-const getCity = async (db) => {
-  const cityCol = collection(db, "japon");
-  const japonSnapshot = await getDocs(cityCol);
-  //  Bien pour une seule donnée
-  const cities = japonSnapshot.docs.map((doc) => ({
-    ...doc.data(),
-    id: doc.id,
-  }));
-  return cities;
-};
-const cities = await getCity(db);
-
-console.table(cities);
 const CityCard = () => {
+  //récupération des infos sur firebase
+  const getCities = async () => {
+    const citiesCol = collection(db, "japon");
+    const citiesSnapshot = await getDocs(citiesCol);
+    const citiesData = citiesSnapshot.docs.map((doc) => ({
+      ...doc.data(),
+      id: doc.id,
+    }));
+    setCities(citiesData.reverse()); // Inverser l'ordre des articles
+  };
+  useEffect(() => {
+    getCities();
+  }, []);
+  const [cities, setCities] = useState([]);
+  const [visibleCities, setVisibleCities] = useState(3); // Nombre initial de villes affichées
+
+  const showAllCities = () => {
+    setVisibleCities(cities.length); // Afficher tous les articles
+  };
+
   return (
     <div className="city-cards">
       <ul>
-        {cities
-          .slice()
-          .reverse()
-          .map((cities, index) => (
+        {cities.slice(0, visibleCities).map(
+          (
+            cities,
+            index //afficher le nombres de cards choisis
+          ) => (
             <li key={index}>
               <div className="cityImg">
                 <img src={cities.img} alt={cities.id} />
                 <h3 className="cityName">{cities.id}</h3>
               </div>
             </li>
-          ))}
+          )
+        )}
       </ul>
+      {visibleCities < cities.length && ( //bouton pour afficher toutes les cards
+        <div className="show-more-container">
+          <button onClick={showAllCities} className="main-button">
+            Voir plus de villes
+          </button>
+        </div>
+      )}
     </div>
   );
 };

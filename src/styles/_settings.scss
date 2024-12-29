@@ -46,3 +46,25 @@ ul {
   padding: 0;
   margin: 0;
 }
+
+.main-button {
+  display: inline-block;
+  height: 55px;
+  width: 250px;
+  font-size: 16px;
+  color: $blue-1;
+  background: none;
+  text-decoration: none;
+  font-weight: bold;
+  border: 2px solid $blue-1;
+  border-radius: 15px;
+  position: relative;
+  overflow: hidden;
+  transition: color 0.6s ease;
+}
+
+.main-button:hover {
+  color: $white;
+  background: $blue-1;
+  cursor: pointer;
+}

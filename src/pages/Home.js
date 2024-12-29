@@ -1,7 +1,7 @@
 import React from "react";
 import Navigation from "../components/Navigation";
-
 import HomeMain from "../components/HomeMain";
+import Footer from "../components/Footer-main";
 
 const Home = () => {
   return (
@@ -23,6 +23,7 @@ const Home = () => {
           <div className="activities-container"></div>
         </div>
         <HomeMain />
+        <Footer />
       </div>
     </div>
   );
