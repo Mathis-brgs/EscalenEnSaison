@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { initializeApp } from "firebase/app";
-
+import { NavLink } from "react-router-dom";
 import { collection, getDocs, getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
@@ -46,12 +46,14 @@ const CityCard = () => {
             cities,
             index //afficher le nombres de cards choisis
           ) => (
-            <li key={index}>
-              <div className="cityImg">
-                <img src={cities.img} alt={cities.id} />
-                <h3 className="cityName">{cities.id}</h3>
-              </div>
-            </li>
+            <NavLink to={`/ville/${cities.id}`}>
+              <li key={index}>
+                <div className="cityImg">
+                  <img src={cities.img} alt={cities.id} />
+                  <h3 className="cityName">{cities.id}</h3>
+                </div>
+              </li>
+            </NavLink>
           )
         )}
       </ul>

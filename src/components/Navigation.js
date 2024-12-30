@@ -1,12 +1,19 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
+import Connexion from "./Connexion"; // Notez l'import sans accolades.
 
 const Navigation = () => {
   const [showLinks, setShowLinks] = useState(false);
+  const [isPopupOpen, setPopupOpen] = useState(false);
+
+  const handleClosePopup = () => {
+    setPopupOpen(false);
+  };
+
   const handleShowLinks = () => {
     setShowLinks(!showLinks);
   };
+
   return (
     <nav className={`navigation ${showLinks ? "show-nav" : "hive-nav"} `}>
       <NavLink to="/">
@@ -14,17 +21,20 @@ const Navigation = () => {
       </NavLink>
       <ul className="navigation-links">
         <li className="fav">
-          <i class="fa-solid fa-heart fa-xl"></i>
+          <i className="fa-solid fa-heart fa-xl"></i>
         </li>
-        <li className="connexion">Connexion</li>
-
+        <div>
+          <li className="connexion" onClick={() => setPopupOpen(true)}>
+            Connexion
+          </li>
+          {isPopupOpen && <Connexion onClose={handleClosePopup} />}
+        </div>
         <ul className="navbar-links">
           <li className="navbar-items">
             <NavLink to="/aboutJapan">Japon</NavLink>
           </li>
-
           <li className="navbar-items">
-            <NavLink to="/">Villes</NavLink>
+            <NavLink to="/activites">Activités</NavLink>
           </li>
           <li className="navbar-items-fav">
             <NavLink to="/">Favoris</NavLink>
@@ -36,7 +46,7 @@ const Navigation = () => {
             <NavLink to="/">Taux de changes</NavLink>
           </li>
           <li className="navbar-items">
-            <NavLink to="/">Comparitif de vols</NavLink>
+            <NavLink to="/">Comparatif de vols</NavLink>
           </li>
         </ul>
         <button className="burger-nav" onClick={handleShowLinks}>

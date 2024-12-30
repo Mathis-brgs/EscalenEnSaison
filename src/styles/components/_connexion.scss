@@ -1,0 +1,106 @@
+// Variables de couleur
+$blue-1: #001f3f; // Remplacez par le code HEX exact de $blue-1
+
+.connexion-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.connexion-popup {
+  background-color: #fff;
+  border-radius: 15px;
+  width: 400px;
+  height: 400px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  position: relative;
+}
+
+.connexion-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.connexion-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: $blue-1;
+  margin-bottom: 10px;
+}
+
+.connexion-subtitle {
+  font-size: 18px;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.connexion-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.connexion-input {
+  width: 80%;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  background-color: #f6f6f6;
+
+  &:focus {
+    outline: 2px solid $blue-1;
+  }
+}
+
+.connexion-submit {
+  background-color: $blue-1;
+  color: #fff;
+  padding: 10px 20px;
+  width: 80%;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: darken($blue-1, 10%);
+  }
+}
+
+.connexion-footer {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #777;
+
+  .connexion-link {
+    color: $blue-1;
+    font-weight: bold;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

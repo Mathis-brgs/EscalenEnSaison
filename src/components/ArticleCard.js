@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { initializeApp } from "firebase/app";
 import { collection, getDocs, getFirestore } from "firebase/firestore";
+import { NavLink } from "react-router-dom";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBpucsBgcuLam24cCJoXnfbPBjvmnHCKTA",
@@ -48,18 +49,20 @@ const ArticleCard = () => {
             article,
             index //afficher en listes les cards des articles
           ) => (
-            <li className="card" key={index}>
-              <div className="articleImgContainer">
-                <img
-                  className="articleImg"
-                  src={article.img}
-                  alt={article.alt}
-                />
-              </div>
-              <div className="articleTxtContainer">
-                <h3 className="articleName">{article.id}</h3>
-              </div>
-            </li>
+            <NavLink to={`/article/${article.id}`}>
+              <li className="card" key={index}>
+                <div className="articleImgContainer">
+                  <img
+                    className="articleImg"
+                    src={article.img}
+                    alt={article.alt}
+                  />
+                </div>
+                <div className="articleTxtContainer">
+                  <h3 className="articleName">{article.titre}</h3>
+                </div>
+              </li>
+            </NavLink>
           )
         )}
       </ul>

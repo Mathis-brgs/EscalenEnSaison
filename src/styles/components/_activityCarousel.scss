@@ -1,0 +1,79 @@
+// Conteneur principal
+.activity-carousel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 55vw;
+  height: 10vh;
+  background-color: $white;
+  padding: 10px 20px;
+  border-radius: 40px;
+  overflow: hidden;
+  position: relative;
+}
+
+// Flèches
+.carousel-arrow {
+  background-color: $blue-1;
+  color: $white;
+  border: none;
+  width: 50px;
+  height: 40px;
+  font-size: 24px;
+  cursor: pointer;
+
+  border-radius: 50%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  &.left-arrow {
+    margin-right: 10px;
+  }
+
+  &.right-arrow {
+    margin-left: 10px;
+  }
+}
+
+// Conteneur des activités
+.carousel-container {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none; // Masque la scrollbar dans Firefox
+
+  &::-webkit-scrollbar {
+    display: none; // Masque la scrollbar dans Webkit (Chrome, Safari)
+  }
+}
+
+// Élément d'activité
+.activity-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 100px; // Taille fixe pour les éléments
+  color: $blue-1;
+  background-color: $white;
+  border-radius: 10px;
+  padding: 10px;
+
+  text-align: center;
+
+  .activity-icon {
+    font-size: 30px;
+    margin-bottom: 5px;
+  }
+
+  .activity-label {
+    font-size: 14px;
+    font-weight: bold;
+  }
+}

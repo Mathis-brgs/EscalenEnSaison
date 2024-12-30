@@ -5,7 +5,8 @@ import AboutJapan from "./pages/AboutJapan";
 import Error404 from "./pages/Error404";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fab } from "@fortawesome/free-brands-svg-icons";
-import Article from "./pages/Article.Js";
+import Articles from "./pages/Articles";
+import Search from "./pages/Search";
 
 const App = () => {
   return (
@@ -14,7 +15,8 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/aboutJapan" element={<AboutJapan />} />
         <Route path="*" element={<Error404 />} />
-        <Route path="/article/*" element={<Article />} />
+        <Route path="/article/*" element={<Articles />} />
+        <Route path="/search/*" element={<Search />} />
       </Routes>
     </BrowserRouter>
   );
