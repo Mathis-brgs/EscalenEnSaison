@@ -1,4 +1,5 @@
 import React, { useRef } from "react";
+import { NavLink } from "react-router-dom";
 
 const ActivityCarousel = () => {
   const carouselRef = useRef(null);
@@ -43,10 +44,12 @@ const ActivityCarousel = () => {
       {/* Conteneur des activités */}
       <div className="carousel-container" ref={carouselRef}>
         {activities.map((activity) => (
-          <div className="activity-item" key={activity.id}>
-            <div className="activity-icon">{activity.icon}</div>
-            <div className="activity-label">{activity.label}</div>
-          </div>
+          <NavLink to={`/search/all/${activity.label}`}>
+            <div className="activity-item" key={activity.id}>
+              <div className="activity-icon">{activity.icon}</div>
+              <div className="activity-label">{activity.label}</div>
+            </div>
+          </NavLink>
         ))}
       </div>
 

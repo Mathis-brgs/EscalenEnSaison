@@ -4,13 +4,13 @@ import { NavLink } from "react-router-dom";
 import { collection, getDocs, getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBpucsBgcuLam24cCJoXnfbPBjvmnHCKTA",
-  authDomain: "escaleensaison.firebaseapp.com",
-  projectId: "escaleensaison",
-  storageBucket: "escaleensaison.firebasestorage.app",
-  messagingSenderId: "1034229447699",
-  appId: "1:1034229447699:web:9a76c97da164e6a32253e6",
-  measurementId: "G-JT9VN0BKLK",
+  apiKey: process.env.REACT_APP_APIKEY,
+  authDomain: process.env.REACT_APP_AUTHDOMAIN,
+  projectId: process.env.REACT_APP_PROJETID,
+  storageBucket: process.env.REACT_APP_STORAGEBUCKET,
+  messagingSenderId: process.env.REACT_APP_MESSAGINGSENDERID,
+  appId: process.env.REACT_APP_APPID,
+  measurementId: process.env.REACT_APP_MEASUREMENTID,
 };
 
 // Initialize Firebase
