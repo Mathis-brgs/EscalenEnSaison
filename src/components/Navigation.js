@@ -34,7 +34,7 @@ const Navigation = () => {
             <NavLink to="/aboutJapan">Japon</NavLink>
           </li>
           <li className="navbar-items">
-            <NavLink to="/activites">Activités</NavLink>
+            <NavLink to="/search">Activités</NavLink>
           </li>
           <li className="navbar-items-fav">
             <NavLink to="/">Favoris</NavLink>

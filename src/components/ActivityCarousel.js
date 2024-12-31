@@ -44,7 +44,7 @@ const ActivityCarousel = () => {
       {/* Conteneur des activités */}
       <div className="carousel-container" ref={carouselRef}>
         {activities.map((activity) => (
-          <NavLink to={`/search/all/${activity.label}`}>
+          <NavLink to={`/search/all/${activity.label}`} key={activity.id}>
             <div className="activity-item" key={activity.id}>
               <div className="activity-icon">{activity.icon}</div>
               <div className="activity-label">{activity.label}</div>

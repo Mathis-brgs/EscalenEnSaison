@@ -44,27 +44,22 @@ const ArticleCard = () => {
   return (
     <div className="article-cards">
       <ul>
-        {articles.slice(0, visibleArticles).map(
-          (
-            article,
-            index //afficher en listes les cards des articles
-          ) => (
-            <NavLink to={`/article/${article.id}`}>
-              <li className="card" key={index}>
-                <div className="articleImgContainer">
-                  <img
-                    className="articleImg"
-                    src={article.img}
-                    alt={article.alt}
-                  />
-                </div>
-                <div className="articleTxtContainer">
-                  <h3 className="articleName">{article.titre}</h3>
-                </div>
-              </li>
-            </NavLink>
-          )
-        )}
+        {articles.slice(0, visibleArticles).map((article, index) => (
+          <NavLink to={`/article/${article.id}`} key={article.id}>
+            <li className="card" key={index}>
+              <div className="articleImgContainer">
+                <img
+                  className="articleImg"
+                  src={article.img}
+                  alt={article.alt}
+                />
+              </div>
+              <div className="articleTxtContainer">
+                <h3 className="articleName">{article.titre}</h3>
+              </div>
+            </li>
+          </NavLink>
+        ))}
       </ul>
       {visibleArticles < articles.length && ( //bouton pour afficher tous les articles
         <div className="show-more-container">

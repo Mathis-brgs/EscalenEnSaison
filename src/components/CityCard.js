@@ -46,7 +46,7 @@ const CityCard = () => {
             cities,
             index //afficher le nombres de cards choisis
           ) => (
-            <NavLink to={`/ville/${cities.id}`}>
+            <NavLink to={`/ville/${cities.id}`} key={cities.id}>
               <li key={index}>
                 <div className="cityImg">
                   <img src={cities.img} alt={cities.id} />

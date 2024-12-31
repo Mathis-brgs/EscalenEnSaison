@@ -4,6 +4,7 @@
   color: $white;
   display: flex;
   position: inherit;
+  overflow: auto;
   padding: 1rem;
   flex-wrap: wrap;
   width: 100%;
@@ -11,6 +12,7 @@
   min-height: 75px;
   align-items: center;
   justify-content: space-between;
+  z-index: 1000;
 }
 
 .logo-nav {
@@ -115,6 +117,7 @@
   flex-direction: column;
   justify-content: space-around;
   position: fixed;
+  z-index: 1000;
   align-items: center;
   right: -100vw;
   bottom: 0;
@@ -146,6 +149,7 @@
 .navbar-items:hover,
 .navbar-items-fav:hover {
   background: $light-grey;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 767px) {

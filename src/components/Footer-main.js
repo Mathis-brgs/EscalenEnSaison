@@ -4,7 +4,7 @@ const Footer = () => {
   return (
     <div className="footer-main">
       <ul className="footer-links">
-        <li>Villes</li>
+        <li>Japon</li>
         <li>Activités</li>
         <li>Conseils Voyageurs</li>
         <li>Taux de changes</li>

@@ -8,7 +8,7 @@ const HomeMain = () => {
       <h3 className="home-h3">De nombreuses villes à visiter</h3>
       <CityCard />
       <div className="séparation"></div>
-      <h4>Conseils Voyageurs</h4>
+      <h4 className="conseils">Conseils Voyageurs</h4>
       <ArticleCard />
     </div>
   );
