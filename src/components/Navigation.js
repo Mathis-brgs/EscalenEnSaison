@@ -1,10 +1,14 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import Connexion from "./Connexion"; // Notez l'import sans accolades.
+import { useCity } from "../contexts/CityContext"; // Import du contexte pour la ville
+import { useSeason } from "../contexts/SeasonContext";
 
 const Navigation = () => {
   const [showLinks, setShowLinks] = useState(false);
   const [isPopupOpen, setPopupOpen] = useState(false);
+  const { setSelectedCity } = useCity(); // Utilisation du contexte pour la ville
+  const { setSelectedSeason } = useSeason();
 
   const handleClosePopup = () => {
     setPopupOpen(false);
@@ -14,9 +18,14 @@ const Navigation = () => {
     setShowLinks(!showLinks);
   };
 
+  const handleResetFilters = () => {
+    setSelectedCity(""); // Réinitialiser la ville sélectionnée
+    setSelectedSeason("Toutes"); // Réinitialiser la saison sélectionnée
+  };
+
   return (
     <nav className={`navigation ${showLinks ? "show-nav" : "hive-nav"} `}>
-      <NavLink to="/">
+      <NavLink to="/" onClick={handleResetFilters}>
         <div className="logo-nav">Escale en saison</div>
       </NavLink>
       <ul className="navigation-links">

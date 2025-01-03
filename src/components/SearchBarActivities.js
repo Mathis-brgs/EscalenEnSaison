@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import { initializeApp } from "firebase/app";
 import { collection, getDocs, getFirestore } from "firebase/firestore";
+import { useCity } from "../contexts/CityContext"; // Import du contexte pour la ville
+import { useSeason } from "../contexts/SeasonContext";
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_APIKEY,
@@ -17,29 +19,16 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 const SearchBarA = () => {
-  useEffect(() => {
-    const testFirebase = async () => {
-      try {
-        const querySnapshot = await getDocs(collection(db, "japon"));
-        console.log(
-          "Données récupérées :",
-          querySnapshot.docs.map((doc) => doc.id)
-        );
-      } catch (error) {
-        console.error("Erreur avec Firebase :", error);
-      }
-    };
-    testFirebase();
-  }, []);
-
+  const { selectedCity, setSelectedCity } = useCity(); // Utilisation du contexte pour la ville
+  const { setSelectedSeason } = useSeason();
   const [openCategory, setOpenCategory] = useState(null);
   const [searchData, setSearchData] = useState({
     country: "Japon",
-    city: "Toutes",
+    city: selectedCity || "Toutes", // Initialiser avec la ville du contexte
     season: "Toutes",
   });
 
-  const [cities, setCities] = useState([]); // Pour charger les villes dynamiquement depuis Firebase
+  const [cities, setCities] = useState([]); // Charger les villes depuis Firebase
   const containerRef = useRef(null);
 
   // Données statiques pour Pays et Saisons
@@ -60,7 +49,7 @@ const SearchBarA = () => {
         const cityList = querySnapshot.docs.map((doc) => ({
           id: doc.id,
         }));
-        setCities([{ id: "Toutes" }, ...cityList]);
+        setCities([{ id: "Toutes" }, ...cityList.reverse()]);
       } catch (error) {
         console.error("Erreur lors de la récupération des villes :", error);
       }
@@ -69,20 +58,36 @@ const SearchBarA = () => {
     fetchCities();
   }, []);
 
+  // Mettre à jour `searchData.city` lorsque `selectedCity` change
+  useEffect(() => {
+    setSearchData((prev) => ({
+      ...prev,
+      city: selectedCity || "Toutes",
+    }));
+  }, [selectedCity]);
+
   const toggleOverlay = (field) => {
-    setOpenCategory((prev) => (prev === field ? null : field)); // Basculer ou fermer
+    setOpenCategory((prev) => (prev === field ? null : field));
   };
 
-  // Sélection d'une option
   const handleSelect = (field, value) => {
     setSearchData((prev) => ({
       ...prev,
       [field]: value,
     }));
+
+    if (field === "city") {
+      setSelectedCity(value); // Mettre à jour la ville dans le contexte
+    }
+
+    if (field === "season") {
+      setSelectedSeason(value); // Mettre à jour la saison dans le contexte
+    }
+
     setOpenCategory(null); // Fermer l'overlay après sélection
   };
 
-  // Fermeture des overlays lorsque l'utilisateur clique en dehors
+  // Fermer les overlays quand on clique en dehors
   const handleClickOutside = (event) => {
     if (containerRef.current && !containerRef.current.contains(event.target)) {
       setOpenCategory(null);
@@ -170,9 +175,6 @@ const SearchBarA = () => {
             </div>
           )}
         </div>
-
-        {/* Bouton Rechercher */}
-        <button className="search-bar__button">Rechercher</button>
       </div>
     </div>
   );
