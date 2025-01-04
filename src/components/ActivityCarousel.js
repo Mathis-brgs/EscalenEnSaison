@@ -4,7 +4,8 @@ import { useActivities } from "../contexts/ActivitiesContext";
 
 const ActivityCarousel = () => {
   const carouselRef = useRef(null);
-  const { activitiesExcludingAll, setSelectedActivity } = useActivities();
+  const { activitiesExcludingAll, setSelectedActivity, selectedActivity } =
+    useActivities();
 
   const scrollLeft = () => {
     carouselRef.current.scrollBy({
@@ -31,11 +32,15 @@ const ActivityCarousel = () => {
             to={`/search`}
             key={activity.id}
             onClick={() => {
-              console.log("Setting selected activity:", activity); // Debug
-              setSelectedActivity(activity); // Met à jour l'activité sélectionnée
+              // Met à jour l'état `selectedActivity` à chaque sélection d'un élément du carrousel
+              setSelectedActivity(activity); // On passe l'objet d'activité complet, pas juste le label
             }}
           >
-            <div className="activity-item">
+            <div
+              className={`activity-item ${
+                selectedActivity?.label === activity.label ? "selected" : ""
+              }`}
+            >
               <div className="activity-icon">{activity.icon}</div>
               <div className="activity-label">{activity.label}</div>
             </div>

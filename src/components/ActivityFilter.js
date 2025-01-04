@@ -1,16 +1,22 @@
-import React, { useState } from "react";
+import React from "react";
 import { useActivities } from "../contexts/ActivitiesContext";
 
-const ActivityFilter = ({ onSelect }) => {
-  const { activities } = useActivities(); // Accède directement à la liste des activités
-  const [selectedActivity, setSelectedActivity] = useState(null);
+const ActivityFilter = () => {
+  const { activities, selectedActivity, setSelectedActivity } = useActivities();
 
   const handleSelect = (activityLabel) => {
     const newSelection =
-      activityLabel === selectedActivity ? null : activityLabel;
-    setSelectedActivity(newSelection);
-    onSelect(newSelection);
+      activityLabel === selectedActivity?.label ? null : activityLabel;
+    const selectedActivityObj =
+      newSelection !== null
+        ? activities.find((activity) => activity.label === newSelection)
+        : null;
+    setSelectedActivity(selectedActivityObj);
   };
+
+  if (!Array.isArray(activities) || activities.length === 0) {
+    return <div className="activity-filter">Aucune activité disponible</div>;
+  }
 
   return (
     <div className="activity-filter">
@@ -18,7 +24,10 @@ const ActivityFilter = ({ onSelect }) => {
         <button
           key={activity.id}
           className={`activity-button ${
-            selectedActivity === activity.label ? "selected" : ""
+            selectedActivity?.label === activity.label ||
+            (selectedActivity === null && activity.label === "Toutes")
+              ? "selected"
+              : ""
           }`}
           onClick={() => handleSelect(activity.label)}
         >

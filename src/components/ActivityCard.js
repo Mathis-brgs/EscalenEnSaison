@@ -11,12 +11,13 @@ import { useSeason } from "../contexts/SeasonContext";
 import { useActivities } from "../contexts/ActivitiesContext";
 
 const ActivityCard = () => {
+  const [activities, setActivities] = useState([]);
+  const [visibleActivities, setVisibleActivities] = useState(5); // Nombre d'activités à afficher
   const { selectedCity } = useCity();
   const { selectedSeason } = useSeason();
   const { selectedActivity } = useActivities();
-  const db = getFirestore();
-  const [activities, setActivities] = useState([]);
-  const [visibleActivities, setVisibleActivities] = useState(12);
+
+  const db = getFirestore(); // Initialisation de la référence Firestore
 
   const getActivities = useCallback(async () => {
     try {
@@ -45,12 +46,21 @@ const ActivityCard = () => {
       }
 
       // Filtre par type d'activité
-      if (selectedActivity && selectedActivity.label !== "Toutes") {
-        activitiesData = activitiesData.filter(
-          (activity) =>
-            activity.type &&
-            activity.type.toLowerCase() === selectedActivity.label.toLowerCase()
-        );
+      if (selectedActivity) {
+        const selectedActivityLabel =
+          selectedActivity && selectedActivity.label
+            ? selectedActivity.label
+            : selectedActivity; // Si selectedActivity est un objet, on prend son label
+
+        // Si ce n'est pas 'Toutes', alors on applique le filtre sur le type d'activité
+        if (selectedActivityLabel !== "Toutes") {
+          activitiesData = activitiesData.filter(
+            (activity) =>
+              activity.type &&
+              activity.type.toLowerCase() ===
+                selectedActivityLabel.toLowerCase()
+          );
+        }
       }
 
       setActivities(activitiesData.reverse());
@@ -59,7 +69,6 @@ const ActivityCard = () => {
     }
   }, [db, selectedCity, selectedSeason, selectedActivity]); // Ajout des dépendances
 
-  // Exécute la récupération des activités au montage et lorsqu'une dépendance change
   useEffect(() => {
     getActivities();
   }, [getActivities]);

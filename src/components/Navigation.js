@@ -3,12 +3,14 @@ import { NavLink } from "react-router-dom";
 import Connexion from "./Connexion"; // Notez l'import sans accolades.
 import { useCity } from "../contexts/CityContext"; // Import du contexte pour la ville
 import { useSeason } from "../contexts/SeasonContext";
+import { useActivities } from "../contexts/ActivitiesContext";
 
 const Navigation = () => {
   const [showLinks, setShowLinks] = useState(false);
   const [isPopupOpen, setPopupOpen] = useState(false);
   const { setSelectedCity } = useCity(); // Utilisation du contexte pour la ville
   const { setSelectedSeason } = useSeason();
+  const { setSelectedActivities } = useActivities();
 
   const handleClosePopup = () => {
     setPopupOpen(false);
@@ -19,8 +21,9 @@ const Navigation = () => {
   };
 
   const handleResetFilters = () => {
-    setSelectedCity(""); // Réinitialiser la ville sélectionnée
-    setSelectedSeason("Toutes"); // Réinitialiser la saison sélectionnée
+    setSelectedCity(""); // Réinitialiser les filtres
+    setSelectedSeason("Toutes");
+    setSelectedActivities("");
   };
 
   return (
