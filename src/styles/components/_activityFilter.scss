@@ -1,0 +1,36 @@
+.activity-filter {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding: 10px 0;
+  align-items: center;
+  justify-content: center;
+}
+
+.activity-button {
+  border: 1px solid #ccc;
+  border-radius: 14px;
+  padding: 6px 12px;
+  background-color: white;
+  color: #333;
+  cursor: pointer;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.activity-button.selected {
+  background-color: $blue-1; /* Bleu foncé */
+  color: white;
+  border-color: $blue-1;
+}
+
+.results-container {
+  margin-top: 20px;
+}
+
+.result-item {
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 3px;
+}

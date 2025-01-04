@@ -6,7 +6,7 @@ import ActivityCarousel from "../components/ActivityCarousel";
 import { NavLink } from "react-router-dom";
 import { initializeApp } from "firebase/app";
 import { collection, getDocs, getFirestore } from "firebase/firestore";
-import { useCity } from "../contexts/CityContext"; // Importer le CityContext
+import { useCity } from "../contexts/CityContext";
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_APIKEY,
@@ -18,22 +18,16 @@ const firebaseConfig = {
   measurementId: process.env.REACT_APP_MEASUREMENTID,
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 const Home = () => {
   const [openCategory, setOpenCategory] = useState(null);
-  const [cities, setCities] = useState([]); // Charger les villes depuis Firebase
+  const [cities, setCities] = useState([]);
   const containerRef = useRef(null);
 
-  // Utiliser le contexte pour accéder à la ville sélectionnée
   const { selectedCity, setSelectedCity } = useCity();
-
-  // État local pour la ville sélectionnée temporairement
-  const [localCity, setLocalCity] = useState(
-    selectedCity || "Choisissez votre ville"
-  );
+  const [localCity, setLocalCity] = useState(selectedCity);
 
   useEffect(() => {
     const fetchCities = async () => {
@@ -56,7 +50,7 @@ const Home = () => {
   };
 
   const handleSelect = (city) => {
-    setLocalCity(city); // Met à jour uniquement l'état local
+    setLocalCity(city);
     setOpenCategory(null);
   };
 
@@ -74,7 +68,8 @@ const Home = () => {
   }, []);
 
   const handleSearch = () => {
-    setSelectedCity(localCity); // Met à jour le contexte uniquement ici
+    const cityToSet = localCity || "Toutes";
+    setSelectedCity(cityToSet);
   };
 
   return (
@@ -91,7 +86,7 @@ const Home = () => {
                 onClick={toggleOverlay}
                 className="city-selector-label search-input"
               >
-                {localCity} {/* Utilise l'état local pour afficher la ville */}
+                {localCity || "Choisissez votre ville"}
               </div>
               {openCategory === "city" && (
                 <div className="city-dropdown-hidden active">

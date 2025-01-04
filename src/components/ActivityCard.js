@@ -8,10 +8,12 @@ import {
 import { NavLink } from "react-router-dom";
 import { useCity } from "../contexts/CityContext";
 import { useSeason } from "../contexts/SeasonContext";
+import { useActivities } from "../contexts/ActivitiesContext";
 
 const ActivityCard = () => {
   const { selectedCity } = useCity();
   const { selectedSeason } = useSeason();
+  const { selectedActivity } = useActivities();
   const db = getFirestore();
   const [activities, setActivities] = useState([]);
   const [visibleActivities, setVisibleActivities] = useState(12);
@@ -20,6 +22,7 @@ const ActivityCard = () => {
     try {
       let querySnapshot;
 
+      // Filtre par ville
       if (!selectedCity || selectedCity === "Toutes") {
         querySnapshot = await getDocs(collectionGroup(db, "activities"));
       } else {
@@ -28,15 +31,25 @@ const ActivityCard = () => {
         );
       }
 
+      // Mappe les données des activités
       let activitiesData = querySnapshot.docs.map((doc) => ({
         ...doc.data(),
         id: doc.id,
       }));
 
-      // Filtrer par saison si une saison spécifique est sélectionnée
+      // Filtre par saison
       if (selectedSeason && selectedSeason !== "Toutes") {
         activitiesData = activitiesData.filter(
           (activity) => activity[selectedSeason.toLowerCase()] === true
+        );
+      }
+
+      // Filtre par type d'activité
+      if (selectedActivity && selectedActivity.label !== "Toutes") {
+        activitiesData = activitiesData.filter(
+          (activity) =>
+            activity.type &&
+            activity.type.toLowerCase() === selectedActivity.label.toLowerCase()
         );
       }
 
@@ -44,8 +57,9 @@ const ActivityCard = () => {
     } catch (error) {
       console.error("Erreur lors de la récupération des activités :", error);
     }
-  }, [db, selectedCity, selectedSeason]); // Ajout de selectedSeason comme dépendance
+  }, [db, selectedCity, selectedSeason, selectedActivity]); // Ajout des dépendances
 
+  // Exécute la récupération des activités au montage et lorsqu'une dépendance change
   useEffect(() => {
     getActivities();
   }, [getActivities]);
@@ -53,6 +67,7 @@ const ActivityCard = () => {
   return (
     <div className="activity-cards">
       <ul>
+        {/* Affiche les activités filtrées */}
         {activities.slice(0, visibleActivities).map((activity) => (
           <NavLink to={`/activity/${activity.id}`} key={activity.id}>
             <li className="card">
@@ -69,22 +84,31 @@ const ActivityCard = () => {
               </div>
               {/* Image de l'activité */}
               <div className="activityImgContainer">
-                <img
-                  className="activityImg"
-                  src={activity.img}
-                  alt={activity.name}
-                />
+                {activity.img ? (
+                  <img
+                    className="activityImg"
+                    src={activity.img}
+                    alt={activity.name || "Image de l'activité"}
+                  />
+                ) : (
+                  <div className="placeholderImg">Image indisponible</div>
+                )}
               </div>
               {/* Texte de l'activité */}
               <div className="activityTxtContainer">
                 <h3 className="activityName">{activity.name}</h3>
-                <p className="activityType">{activity.type}</p>
-                <p className="activityCity">{activity.city}</p> {/* Corrigé */}
+                <p className="activityType">
+                  {activity.type || "Type inconnu"}
+                </p>
+                <p className="activityCity">
+                  {activity.city || "Ville inconnue"}
+                </p>
               </div>
             </li>
           </NavLink>
         ))}
       </ul>
+      {/* Bouton "Voir plus d'activités" */}
       {visibleActivities < activities.length && (
         <div className="show-more-container">
           <button
