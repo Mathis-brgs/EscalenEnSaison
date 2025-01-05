@@ -41,5 +41,4 @@ export const ActivitiesProvider = ({ children }) => {
   );
 };
 
-// Hook pour accéder au contexte
 export const useActivities = () => useContext(ActivitiesContext);

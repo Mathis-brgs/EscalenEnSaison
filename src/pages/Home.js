@@ -7,7 +7,7 @@ import { NavLink } from "react-router-dom";
 import { initializeApp } from "firebase/app";
 import { collection, getDocs, getFirestore } from "firebase/firestore";
 import { useCity } from "../contexts/CityContext";
-import { useActivities } from "../contexts/ActivitiesContext"; // Assurez-vous d'importer le contexte des activités
+import { useActivities } from "../contexts/ActivitiesContext";
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_APIKEY,
@@ -28,7 +28,7 @@ const Home = () => {
   const containerRef = useRef(null);
 
   const { selectedCity, setSelectedCity } = useCity();
-  const { setSelectedActivity } = useActivities(); // Utilisation du contexte des activités pour réinitialiser le filtre
+  const { setSelectedActivity } = useActivities();
 
   const [localCity, setLocalCity] = useState(selectedCity);
 
@@ -73,7 +73,7 @@ const Home = () => {
   const handleSearch = () => {
     const cityToSet = localCity || "Toutes";
     setSelectedCity(cityToSet);
-    setSelectedActivity(null); // Réinitialiser l'activité sélectionnée lors de la recherche
+    setSelectedActivity(null);
   };
 
   return (

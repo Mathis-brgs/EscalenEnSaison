@@ -14,7 +14,6 @@ export const CityProvider = ({ children }) => {
   );
 };
 
-// Hook personnalisé pour accéder au contexte
 export const useCity = () => {
   const context = useContext(CityContext);
   if (!context) {

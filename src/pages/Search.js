@@ -8,7 +8,7 @@ const Search = () => {
   const [selectedActivity, setSelectedActivity] = useState(null);
 
   const onActivitySelect = (activity) => {
-    setSelectedActivity(activity); // Met à jour l'état local ou contexte
+    setSelectedActivity(activity);
     console.log("Activité sélectionnée :", activity);
   };
 
