@@ -50,6 +50,10 @@
   transition: all 0.2s cubic-bezier(0.445, 0.05, 0.55, 0.95);
 }
 
+.fav {
+  visibility: hidden;
+}
+
 .connexion:hover::after {
   height: calc(100% + 8px);
 }
@@ -152,6 +156,10 @@
   cursor: pointer;
 }
 
+.navbar-items-fav {
+  visibility: hidden;
+}
+
 @media screen and (max-width: 767px) {
   .navbar-links {
     flex-direction: column;
@@ -198,6 +206,7 @@
   }
   .navbar-items-fav {
     color: $blue-1;
+    visibility: hidden;
   }
   .show-nav .burger-bar::before {
     transform: rotate(45deg);

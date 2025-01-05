@@ -7,6 +7,7 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import { fab } from "@fortawesome/free-brands-svg-icons";
 import Articles from "./pages/Articles";
 import Search from "./pages/Search";
+import Villes from "./pages/Villes";
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
         <Route path="*" element={<Error404 />} />
         <Route path="/article/*" element={<Articles />} />
         <Route path="/search/*" element={<Search />} />
+        <Route path="/ville/*" element={<Villes />} />
       </Routes>
     </BrowserRouter>
   );

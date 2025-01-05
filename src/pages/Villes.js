@@ -1,6 +1,7 @@
 import React from "react";
 import Navigation from "../components/Navigation";
-const Articles = () => {
+
+const Villes = () => {
   return (
     <div>
       <Navigation />
@@ -8,4 +9,4 @@ const Articles = () => {
   );
 };
 
-export default Articles;
+export default Villes;
