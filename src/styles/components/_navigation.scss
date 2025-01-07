@@ -3,7 +3,8 @@
   text-decoration: none;
   color: $white;
   display: flex;
-  position: inherit;
+  position: sticky;
+  top: 0; /* Positionnez la navbar en haut */
   overflow: auto;
   padding: 1rem;
   flex-wrap: wrap;
@@ -14,7 +15,6 @@
   justify-content: space-between;
   z-index: 1000;
 }
-
 .logo-nav {
   font-size: 1.8rem;
   text-decoration: none;
@@ -50,10 +50,6 @@
   transition: all 0.2s cubic-bezier(0.445, 0.05, 0.55, 0.95);
 }
 
-.fav {
-  visibility: hidden;
-}
-
 .connexion:hover::after {
   height: calc(100% + 8px);
 }
@@ -75,12 +71,10 @@
   background: transparent;
   color: inherit;
   border: none;
-}
-
-.burger-nav {
   display: block;
   position: relative;
 }
+
 .burger-nav:hover {
   cursor: pointer;
 }
@@ -130,11 +124,11 @@
 }
 .show-nav .navbar-links {
   right: 15px;
-  top: 70px;
+  top: 80px;
   background: $white;
   width: 280px;
   row-gap: 0.2rem;
-  height: 380px;
+  height: 360px;
   visibility: visible;
   border-radius: 10px;
 }
@@ -159,6 +153,35 @@
 .navbar-items-fav {
   visibility: hidden;
 }
+/* Style pour les boutons Connexion et Inscription dans la liste des liens burger */
+.navbar-items.connexion-item,
+.navbar-items.inscription-item {
+  display: none;
+  color: $blue-1;
+  padding: 1rem;
+  font-size: 1.6rem;
+  text-align: center;
+  width: 100%;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.navbar-items.connexion-item {
+  margin-top: 1rem;
+  background-color: $bluewhite;
+}
+
+.navbar-items.inscription-item {
+  margin-top: 1rem;
+  background-color: $blue-1;
+  color: white;
+}
+
+.navbar-items.inscription-item:hover {
+  background-color: $blue-1;
+}
 
 @media screen and (max-width: 767px) {
   .navbar-links {
@@ -174,7 +197,10 @@
     padding: 1rem;
     background-color: black;
   }
-
+  .fav {
+    visibility: hidden;
+    display: none;
+  }
   .show-nav .navbar-links {
     right: 0;
     width: 100vw;
@@ -191,9 +217,6 @@
     visibility: hidden;
   }
 
-  .fav {
-    display: none;
-  }
   .navbar-items,
   .navbar-items-fav {
     display: block;
@@ -206,7 +229,7 @@
   }
   .navbar-items-fav {
     color: $blue-1;
-    visibility: hidden;
+    visibility: visible;
   }
   .show-nav .burger-bar::before {
     transform: rotate(45deg);
@@ -217,5 +240,29 @@
     transform: rotate(-45deg);
     background: $blue-1;
     z-index: 1000;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .burger-nav {
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    color: inherit;
+    border: none;
+    display: block;
+    position: relative;
+  }
+  .button_mobile_CI {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-bottom: 40px;
+    width: 100%;
+  }
+  .navbar-items.connexion-item,
+  .navbar-items.inscription-item {
+    display: block;
   }
 }

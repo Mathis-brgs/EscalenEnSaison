@@ -49,3 +49,57 @@
   padding: 5px 10px;
   border-radius: 5px;
 }
+
+/* Responsive Styles */
+@media screen and (max-width: 1024px) {
+  .city-cards ul {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    max-width: 100%;
+    margin: 20px auto 30px;
+  }
+
+  .cityImg {
+    width: 350px;
+    height: 350px;
+  }
+
+  .cityName {
+    font-size: 28px;
+    padding: 4px 8px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .city-cards ul {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    max-width: 100%;
+  }
+
+  .cityImg {
+    width: 200px;
+    height: 200px;
+  }
+
+  .cityName {
+    font-size: 18px;
+    padding: 3px 6px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .city-cards ul {
+    gap: 15px; /* Réduction supplémentaire de l'espacement */
+  }
+
+  .cityImg {
+    width: 250px;
+    height: 250px;
+  }
+
+  .cityName {
+    font-size: 16px;
+    padding: 2px 5px;
+  }
+}

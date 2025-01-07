@@ -1,18 +1,14 @@
 .article-cards ul {
   display: grid;
-  grid-template-columns: repeat(
-    auto-fit,
-    minmax(300px, 1fr)
-  ); /* Colonnes dynamiques avec largeur minimale */
-  gap: 40px; /* Espacement entre les cartes */
-  justify-content: center; /* Centre la grille horizontalement */
-  list-style: none; /* Supprime les puces de liste */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 40px;
+  justify-content: center;
+  list-style: none;
   padding: 0;
-  margin: 20px auto 40px; /* Centrage horizontal global */
-  max-width: 1000px; /* Largeur maximale pour centrer les lignes globalement */
+  margin: 20px auto 40px;
+  max-width: 1000px;
 }
 
-/* Individual card */
 .card {
   justify-content: center;
   background-color: white;
@@ -29,6 +25,7 @@
   transform: translateY(-3px);
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
 }
+
 .articleImgContainer {
   height: 150px;
   overflow: hidden;
@@ -51,7 +48,6 @@
 .articleName {
   font-size: 16px;
   padding: 5px;
-
   margin: 0 0 5px 0;
   color: black;
 }
@@ -60,4 +56,58 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+@media screen and (max-width: 1024px) {
+  .article-cards ul {
+    gap: 30px;
+    max-width: 90%;
+  }
+
+  .articleImg {
+    height: 180px;
+  }
+
+  .articleName {
+    font-size: 18px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .article-cards ul {
+    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    padding: 0 10px;
+  }
+
+  .card {
+    max-width: 100%;
+  }
+
+  .articleImg {
+    height: 150px;
+  }
+
+  .articleName {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .article-cards ul {
+    gap: 15px;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+
+  .card {
+    max-width: 100%;
+  }
+
+  .articleImg {
+    height: 120px;
+  }
+
+  .articleName {
+    font-size: 12px;
+  }
 }

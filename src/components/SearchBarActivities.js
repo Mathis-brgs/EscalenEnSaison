@@ -104,7 +104,6 @@ const SearchBarA = () => {
   return (
     <div className="search-bar" ref={containerRef}>
       <div className="search-bar__container">
-        {/* Pays */}
         <div className="search-bar__field">
           <label>Pays</label>
           <div
@@ -128,7 +127,6 @@ const SearchBarA = () => {
           )}
         </div>
 
-        {/* Ville */}
         <div className="search-bar__field">
           <label>Ville</label>
           <div
@@ -152,7 +150,6 @@ const SearchBarA = () => {
           )}
         </div>
 
-        {/* Saison */}
         <div className="search-bar__field">
           <label>Saison</label>
           <div

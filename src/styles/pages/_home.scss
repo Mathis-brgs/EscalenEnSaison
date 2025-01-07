@@ -1,3 +1,7 @@
+.home {
+  overflow: hidden;
+}
+
 .homeHeader {
   color: black;
   background: white;
@@ -24,7 +28,7 @@
   justify-self: center;
   background-color: #ffffff;
   border-radius: 50px;
-  margin: 30px;
+  margin: 30px 20px;
   padding: 5px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
   width: 35vw;
@@ -85,6 +89,9 @@
 }
 
 .search-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: #0d1b2a;
   color: #ffffff;
   font-weight: bold;
@@ -101,21 +108,52 @@
   background-color: #1b263b;
 }
 
+/* Responsive Styles */
+@media screen and (max-width: 1024px) {
+  .search-container {
+    width: 50vw;
+  }
+  .search-button {
+    font-size: 12px;
+    width: 10vw;
+  }
+}
+
 @media screen and (max-width: 767px) {
   .search-container {
     width: 70vw;
+    flex-direction: column;
+    padding: 10px;
   }
-  .search-input,
-  .city-selector-label {
+
+  .city-selector-label,
+  .search-input {
     font-size: 14px;
   }
 
   .search-button {
     font-size: 12px;
     padding: 15px 20px;
+    width: auto;
   }
 
   .city-dropdown-hidden {
     max-height: 150px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .search-container {
+    width: 90vw;
+  }
+
+  .city-selector-label {
+    font-size: 12px;
+    padding: 10px 15px;
+  }
+
+  .search-button {
+    font-size: 10px;
+    padding: 10px 15px;
   }
 }

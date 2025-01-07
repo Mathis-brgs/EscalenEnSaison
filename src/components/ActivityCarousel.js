@@ -32,7 +32,6 @@ const ActivityCarousel = () => {
             to={`/search`}
             key={activity.id}
             onClick={() => {
-              // Met à jour l'état `selectedActivity` à chaque sélection d'un élément du carrousel
               setSelectedActivity(activity); // On passe l'objet d'activité complet, pas juste le label
             }}
           >
