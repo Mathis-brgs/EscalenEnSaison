@@ -5,6 +5,7 @@
   padding: 10px 0;
   align-items: center;
   justify-content: center;
+  flex-wrap: wrap; /* Allow wrapping on small screens */
 }
 
 .activity-button {
@@ -24,8 +25,39 @@
   border-color: $blue-1;
 }
 
+/* Responsive styling for small screens */
+@media (max-width: 768px) {
+  .activity-filter {
+    justify-content: flex-start; /* Align buttons to the left on smaller screens */
+  }
+
+  .activity-button {
+    font-size: 12px; /* Reduce button font size on smaller screens */
+    padding: 5px 10px; /* Smaller padding for buttons */
+  }
+
+  .activity-button.selected {
+    background-color: #001f3f; /* Modify to a darker shade of blue */
+    color: white;
+  }
+}
+
+@media (max-width: 480px) {
+  .activity-filter {
+    padding: 8px 0;
+    justify-content: center; /* Center buttons on very small screens */
+  }
+
+  .activity-button {
+    font-size: 10px; /* Further reduce font size */
+    padding: 4px 8px; /* Smaller padding */
+  }
+}
+
 .results-container {
   margin-top: 20px;
+  display: flex;
+  flex-direction: column; /* Ensure results are stacked vertically */
 }
 
 .result-item {
@@ -33,4 +65,20 @@
   padding: 10px;
   margin: 5px 0;
   border-radius: 3px;
+  font-size: 14px;
+}
+
+/* Responsive styling for results */
+@media (max-width: 768px) {
+  .result-item {
+    padding: 8px; /* Less padding for small screens */
+    font-size: 12px; /* Smaller text size */
+  }
+}
+
+@media (max-width: 480px) {
+  .result-item {
+    padding: 6px; /* Even smaller padding for very small screens */
+    font-size: 11px; /* Further reduce font size */
+  }
 }

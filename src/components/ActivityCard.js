@@ -5,7 +5,7 @@ import {
   getDocs,
   getFirestore,
 } from "firebase/firestore";
-import { NavLink } from "react-router-dom";
+
 import { useCity } from "../contexts/CityContext";
 import { useSeason } from "../contexts/SeasonContext";
 import { useActivities } from "../contexts/ActivitiesContext";
@@ -32,7 +32,6 @@ const ActivityCard = () => {
         );
       }
 
-      // Mappe les données des activités
       let activitiesData = querySnapshot.docs.map((doc) => ({
         ...doc.data(),
         id: doc.id,
@@ -50,9 +49,8 @@ const ActivityCard = () => {
         const selectedActivityLabel =
           selectedActivity && selectedActivity.label
             ? selectedActivity.label
-            : selectedActivity; // Si selectedActivity est un objet, on prend son label
+            : selectedActivity;
 
-        // Si ce n'est pas 'Toutes', alors on applique le filtre sur le type d'activité
         if (selectedActivityLabel !== "Toutes") {
           activitiesData = activitiesData.filter(
             (activity) =>
@@ -67,7 +65,7 @@ const ActivityCard = () => {
     } catch (error) {
       console.error("Erreur lors de la récupération des activités :", error);
     }
-  }, [db, selectedCity, selectedSeason, selectedActivity]); // Ajout des dépendances
+  }, [db, selectedCity, selectedSeason, selectedActivity]);
 
   useEffect(() => {
     getActivities();
@@ -76,11 +74,13 @@ const ActivityCard = () => {
   return (
     <div className="activity-cards">
       <ul>
-        {/* Affiche les activités filtrées */}
         {activities.slice(0, visibleActivities).map((activity) => (
-          <NavLink to={`/activity/${activity.id}`} key={activity.id}>
+          <a
+            href={activity.googleMaps}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <li className="card">
-              {/* Badges des saisons */}
               <div className="season-badges">
                 {activity.hiver && <span className="badge badge-winter"></span>}
                 {activity.printemps && (
@@ -91,7 +91,7 @@ const ActivityCard = () => {
                   <span className="badge badge-autumn"></span>
                 )}
               </div>
-              {/* Image de l'activité */}
+
               <div className="activityImgContainer">
                 {activity.img ? (
                   <img
@@ -103,7 +103,7 @@ const ActivityCard = () => {
                   <div className="placeholderImg">Image indisponible</div>
                 )}
               </div>
-              {/* Texte de l'activité */}
+
               <div className="activityTxtContainer">
                 <h3 className="activityName">{activity.name}</h3>
                 <p className="activityType">
@@ -114,10 +114,10 @@ const ActivityCard = () => {
                 </p>
               </div>
             </li>
-          </NavLink>
+          </a>
         ))}
       </ul>
-      {/* Bouton "Voir plus d'activités" */}
+
       {visibleActivities < activities.length && (
         <div className="show-more-container">
           <button

@@ -17,8 +17,8 @@ $blue-1: #001f3f; // Remplacez par le code HEX exact de $blue-1
 .connexion-popup {
   background-color: #fff;
   border-radius: 15px;
-  width: 400px;
-  height: 400px;
+  width: 350px;
+  height: 200px;
   padding: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   text-align: center;
@@ -87,6 +87,9 @@ $blue-1: #001f3f; // Remplacez par le code HEX exact de $blue-1
   &:hover {
     background-color: darken($blue-1, 10%);
   }
+}
+.google-connexion {
+  margin-top: 15px;
 }
 
 .connexion-footer {

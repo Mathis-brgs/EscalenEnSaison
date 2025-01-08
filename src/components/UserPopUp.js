@@ -1,23 +1,38 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { useAuth } from "../contexts/authContext/index";
 import { signOut } from "firebase/auth";
-import { auth } from "../firebase/firebase"; // Assurez-vous que vous avez correctement importé `auth` de Firebase.
+import { auth } from "../firebase/firebase";
 
 const UserPopUp = ({ onClose }) => {
   const { currentUser } = useAuth();
+  const popupRef = useRef(null);
 
   const handleLogout = async () => {
     try {
-      await signOut(auth); // Déconnexion via Firebase Auth
-      onClose(); // Fermer le popup après la déconnexion
+      await signOut(auth);
+      onClose();
     } catch (error) {
       console.error("Erreur de déconnexion: ", error);
     }
   };
 
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (popupRef.current && !popupRef.current.contains(event.target)) {
+        onClose();
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [onClose]);
+
   return (
     <div className="user-popup">
-      <div className="user-popup-content">
+      <div className="user-popup-content" ref={popupRef}>
         <h1>Bienvenue, {currentUser.displayName || "Utilisateur"}</h1>
         <img
           src={currentUser.photoURL || "/default-avatar.png"}
@@ -26,7 +41,6 @@ const UserPopUp = ({ onClose }) => {
         />
         <p>Email: {currentUser.email}</p>
         <button onClick={handleLogout}>Se déconnecter</button>
-        <button onClick={onClose}>Fermer</button>
       </div>
     </div>
   );

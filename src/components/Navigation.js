@@ -81,30 +81,27 @@ const Navigation = () => {
         {/* User popup */}
         {currentUser && (
           <div className="userInfos" onClick={() => setUserPopupOpen(true)}>
-            <li className="userLogo">&#9823;</li>
+            <li className="userLogo">
+              <i className="fa-solid fa-user fa-xl"></i>
+            </li>
             {isUserPopupOpen && <UserPopUp onClose={handleCloseUserPopup} />}
           </div>
         )}
 
         <ul className="navbar-links">
-          <div className="button_mobile_CI">
-            <li
-              className="navbar-items connexion-item"
-              onClick={() => {
-                setConnexionPopupOpen(true);
-                setShowLinks(false);
-              }}
-            >
-              Connexion
-            </li>
-
-            <li
-              className="navbar-items inscription-item"
-              onClick={() => setShowLinks(false)}
-            >
-              Inscription
-            </li>
-          </div>
+          {!currentUser && (
+            <div className="button_mobile_CI">
+              <li
+                className="navbar-items connexion-item"
+                onClick={() => {
+                  setConnexionPopupOpen(true);
+                  setShowLinks(false);
+                }}
+              >
+                Connexion
+              </li>
+            </div>
+          )}
 
           <li className="navbar-items">
             <NavLink to="/aboutJapan">Japon</NavLink>

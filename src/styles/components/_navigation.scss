@@ -153,7 +153,7 @@
 .navbar-items-fav {
   visibility: hidden;
 }
-/* Style pour les boutons Connexion et Inscription dans la liste des liens burger */
+
 .navbar-items.connexion-item,
 .navbar-items.inscription-item {
   display: none;
@@ -181,6 +181,10 @@
 
 .navbar-items.inscription-item:hover {
   background-color: $blue-1;
+}
+
+.userLogo i {
+  cursor: pointer;
 }
 
 @media screen and (max-width: 767px) {
@@ -215,6 +219,7 @@
 
   .connexion {
     visibility: hidden;
+    display: none;
   }
 
   .navbar-items,
@@ -241,6 +246,20 @@
     background: $blue-1;
     z-index: 1000;
   }
+  .button_mobile_CI {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-bottom: 40px;
+    width: 100%;
+  }
+  .navbar-items.connexion-item,
+  .navbar-items.inscription-item {
+    display: block;
+    width: 70%;
+    font-size: 20px;
+  }
 }
 
 @media screen and (max-width: 480px) {
@@ -264,5 +283,7 @@
   .navbar-items.connexion-item,
   .navbar-items.inscription-item {
     display: block;
+    width: 70%;
+    font-size: 20px;
   }
 }
