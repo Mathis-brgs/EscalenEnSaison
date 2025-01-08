@@ -82,7 +82,7 @@ const Home = () => {
         <Navigation />
         <div className="homeHeaderSearch">
           <h1>
-            Organisez <br /> votre voyage idéal
+            Organisez <br /> votre voyage idéal{" "}
           </h1>
           <div className="search-container" ref={containerRef}>
             <div className="city-selector-wrapper">

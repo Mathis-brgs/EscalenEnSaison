@@ -1,20 +1,28 @@
 import React, { useState, useRef, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import Connexion from "./Connexion";
+import UserPopUp from "./UserPopUp";
 import { useCity } from "../contexts/CityContext";
 import { useSeason } from "../contexts/SeasonContext";
 import { useActivities } from "../contexts/ActivitiesContext";
+import { useAuth } from "../contexts/authContext/index";
 
 const Navigation = () => {
+  const { currentUser } = useAuth();
   const [showLinks, setShowLinks] = useState(false);
-  const [isPopupOpen, setPopupOpen] = useState(false);
+  const [isConnexionPopupOpen, setConnexionPopupOpen] = useState(false);
+  const [isUserPopupOpen, setUserPopupOpen] = useState(false);
   const { setSelectedCity } = useCity();
   const { setSelectedSeason } = useSeason();
   const { setSelectedActivities } = useActivities();
   const menuRef = useRef(null);
 
-  const handleClosePopup = () => {
-    setPopupOpen(false);
+  const handleCloseConnexionPopup = () => {
+    setConnexionPopupOpen(false);
+  };
+
+  const handleCloseUserPopup = () => {
+    setUserPopupOpen(false);
   };
 
   const handleShowLinks = () => {
@@ -43,7 +51,7 @@ const Navigation = () => {
 
   return (
     <nav
-      className={`navigation ${showLinks ? "show-nav" : "hive-nav"} `}
+      className={`navigation ${showLinks ? "show-nav" : "hive-nav"}`}
       ref={menuRef}
     >
       <NavLink to="/" onClick={handleResetFilters}>
@@ -55,12 +63,35 @@ const Navigation = () => {
           <i className="fa-solid fa-heart fa-xl"></i>
         </li>
 
+        {/* Connexion popup */}
+        {!currentUser && (
+          <div>
+            <li
+              className="connexion"
+              onClick={() => setConnexionPopupOpen(true)}
+            >
+              Connexion
+            </li>
+            {isConnexionPopupOpen && (
+              <Connexion onClose={handleCloseConnexionPopup} />
+            )}
+          </div>
+        )}
+
+        {/* User popup */}
+        {currentUser && (
+          <div className="userInfos" onClick={() => setUserPopupOpen(true)}>
+            <li className="userLogo">&#9823;</li>
+            {isUserPopupOpen && <UserPopUp onClose={handleCloseUserPopup} />}
+          </div>
+        )}
+
         <ul className="navbar-links">
           <div className="button_mobile_CI">
             <li
               className="navbar-items connexion-item"
               onClick={() => {
-                setPopupOpen(true);
+                setConnexionPopupOpen(true);
                 setShowLinks(false);
               }}
             >
@@ -99,8 +130,6 @@ const Navigation = () => {
           <span className="burger-bar"></span>
         </button>
       </ul>
-
-      {isPopupOpen && <Connexion onClose={handleClosePopup} />}
     </nav>
   );
 };

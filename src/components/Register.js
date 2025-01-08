@@ -21,16 +21,6 @@ const Connexion = ({ onClose }) => {
     }
   };
 
-  const onGoogleSignIn = (e) => {
-    e.preventDefault();
-    if (!isSigningIn) {
-      setIsSigningIn(true);
-      doSignInWithGoogle().catch((err) => {
-        setIsSigningIn(false);
-      });
-    }
-  };
-
   return (
     <div className="connexion-overlay">
       {userLoggedIn && <NavLink to={"/"} replace={true} />}

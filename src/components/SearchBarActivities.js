@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { initializeApp } from "firebase/app";
 import { collection, getDocs, getFirestore } from "firebase/firestore";
-import { useCity } from "../contexts/CityContext"; // Import du contexte pour la ville
+import { useCity } from "../contexts/CityContext";
 import { useSeason } from "../contexts/SeasonContext";
 
 const firebaseConfig = {
@@ -31,7 +31,6 @@ const SearchBarA = () => {
   const [cities, setCities] = useState([]); // Charger les villes depuis Firebase
   const containerRef = useRef(null);
 
-  // Données statiques pour Pays et Saisons
   const countries = [{ label: "Japon" }];
   const seasons = [
     { label: "Toutes" },
@@ -41,7 +40,6 @@ const SearchBarA = () => {
     { label: "Hiver" },
   ];
 
-  // Récupération des villes depuis Firebase
   useEffect(() => {
     const fetchCities = async () => {
       try {
@@ -58,7 +56,6 @@ const SearchBarA = () => {
     fetchCities();
   }, []);
 
-  // Mettre à jour `searchData.city` lorsque `selectedCity` change
   useEffect(() => {
     setSearchData((prev) => ({
       ...prev,
@@ -77,11 +74,11 @@ const SearchBarA = () => {
     }));
 
     if (field === "city") {
-      setSelectedCity(value); // Mettre à jour la ville dans le contexte
+      setSelectedCity(value);
     }
 
     if (field === "season") {
-      setSelectedSeason(value); // Mettre à jour la saison dans le contexte
+      setSelectedSeason(value);
     }
 
     setOpenCategory(null); // Fermer l'overlay après sélection
