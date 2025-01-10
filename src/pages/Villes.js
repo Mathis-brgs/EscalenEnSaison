@@ -3,6 +3,7 @@ import Navigation from "../components/Navigation";
 import { useParams } from "react-router-dom";
 import { initializeApp } from "firebase/app";
 import { doc, getDoc, getFirestore } from "firebase/firestore";
+import Footer from "../components/Footer-main";
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_APIKEY,
@@ -28,7 +29,7 @@ const Villes = () => {
       const citySnapshot = await getDoc(cityDoc);
 
       if (citySnapshot.exists()) {
-        setCity(citySnapshot.data()); // Stocke les données de la ville
+        setCity(citySnapshot.data());
       }
     };
 
@@ -84,6 +85,7 @@ const Villes = () => {
           </div>
         </div>
       )}
+      <Footer />
     </div>
   );
 };

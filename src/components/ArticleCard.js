@@ -29,7 +29,7 @@ const ArticleCard = () => {
       ...doc.data(),
       id: doc.id,
     }));
-    setArticles(articlesData.reverse()); // Inverser l'ordre des articles
+    setArticles(articlesData.reverse()); // Inverser l'ordre des articles pour afficher le plus récent en premier
   };
 
   useEffect(() => {
@@ -38,9 +38,8 @@ const ArticleCard = () => {
 
   // Fonction pour afficher tous les articles
   const showAllArticles = () => {
-    setVisibleArticles(articles.length); // Afficher tous les articles
+    setVisibleArticles(articles.length);
   };
-
   return (
     <div className="article-cards">
       <ul>

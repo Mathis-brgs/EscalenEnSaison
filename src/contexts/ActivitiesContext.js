@@ -6,7 +6,7 @@ const ActivitiesContext = createContext();
 // Fournisseur de contexte
 export const ActivitiesProvider = ({ children }) => {
   const activities = [
-    { id: 0, icon: "🌐", label: "Toutes" }, // Option par défaut
+    { id: 0, icon: "", label: "Toutes" }, // Option par défaut
     { id: 1, icon: "🏨", label: "Hôtels" },
     { id: 2, icon: "🍴", label: "Restaurants" },
     { id: 3, icon: "🛒", label: "Magasins" },
@@ -30,7 +30,7 @@ export const ActivitiesProvider = ({ children }) => {
     <ActivitiesContext.Provider
       value={{
         activities,
-        activitiesExcludingAll: activities.filter((a) => a.id !== 0), // Exclure "Toutes"
+        activitiesExcludingAll: activities.filter((a) => a.id !== 0), // Exclure "Toutes" pour affichage carrousels
         selectedActivity,
         setSelectedActivity,
         resetActivity,

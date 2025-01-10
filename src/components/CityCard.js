@@ -26,7 +26,7 @@ const CityCard = () => {
       ...doc.data(),
       id: doc.id,
     }));
-    setCities(citiesData.reverse()); // Inverser l'ordre des articles
+    setCities(citiesData.reverse());
   };
   useEffect(() => {
     getCities();
@@ -35,7 +35,7 @@ const CityCard = () => {
   const [visibleCities, setVisibleCities] = useState(3); // Nombre initial de villes affichées
 
   const showAllCities = () => {
-    setVisibleCities(cities.length); // Afficher tous les articles
+    setVisibleCities(cities.length); // Afficher toutes les villes
   };
 
   return (

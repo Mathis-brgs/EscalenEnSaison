@@ -32,7 +32,7 @@ const ActivityCarousel = () => {
             to={`/search`}
             key={activity.id}
             onClick={() => {
-              setSelectedActivity(activity); // On passe l'objet d'activité complet, pas juste le label
+              setSelectedActivity(activity);
             }}
           >
             <div

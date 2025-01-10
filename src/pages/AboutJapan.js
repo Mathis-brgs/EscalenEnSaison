@@ -1,6 +1,6 @@
 import React from "react";
 import Navigation from "../components/Navigation";
-
+import Footer from "../components/Footer-main";
 const AboutJapan = () => {
   return (
     <div>
@@ -55,6 +55,7 @@ const AboutJapan = () => {
         repudiandae beatae repellat officia corporis in mollitia assumenda
         similique labore. Incidunt, nobis! Vel, autem veniam! Placeat, eaque.
       </p>
+      <Footer />
     </div>
   );
 };

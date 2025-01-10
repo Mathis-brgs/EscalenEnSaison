@@ -39,7 +39,7 @@ const Navigation = () => {
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (menuRef.current && !menuRef.current.contains(event.target)) {
-        setShowLinks(false); // Ferme le menu
+        setShowLinks(false); // fermer le menu
       }
     };
 
@@ -63,7 +63,6 @@ const Navigation = () => {
           <i className="fa-solid fa-heart fa-xl"></i>
         </li>
 
-        {/* Connexion popup */}
         {!currentUser && (
           <div>
             <li
@@ -78,7 +77,6 @@ const Navigation = () => {
           </div>
         )}
 
-        {/* User popup */}
         {currentUser && (
           <div className="userInfos" onClick={() => setUserPopupOpen(true)}>
             <li className="userLogo">

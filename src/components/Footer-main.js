@@ -2,6 +2,7 @@ import React from "react";
 
 const Footer = () => {
   return (
+    //Navlink à rajouter
     <div className="footer-main">
       <ul className="footer-links">
         <li>Japon</li>

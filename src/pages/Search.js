@@ -3,6 +3,7 @@ import Navigation from "../components/Navigation";
 import SearchBarA from "../components/SearchBarActivities";
 import ActivityCard from "../components/ActivityCard";
 import ActivityFilter from "../components/ActivityFilter";
+import Footer from "../components/Footer-main";
 
 const Search = () => {
   const [selectedActivity, setSelectedActivity] = useState(null);
@@ -18,6 +19,7 @@ const Search = () => {
       <SearchBarA />
       <ActivityFilter onSelect={onActivitySelect} />
       <ActivityCard selectedActivity={selectedActivity} />
+      <Footer />
     </div>
   );
 };

@@ -12,7 +12,7 @@ import { useActivities } from "../contexts/ActivitiesContext";
 
 const ActivityCard = () => {
   const [activities, setActivities] = useState([]);
-  const [visibleActivities, setVisibleActivities] = useState(5); // Nombre d'activités à afficher
+  const [visibleActivities, setVisibleActivities] = useState(9); // Nombre d'activités à afficher
   const { selectedCity } = useCity();
   const { selectedSeason } = useSeason();
   const { selectedActivity } = useActivities();
