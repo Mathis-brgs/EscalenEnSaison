@@ -8,6 +8,7 @@ import { fab } from "@fortawesome/free-brands-svg-icons";
 import Articles from "./pages/Articles";
 import Search from "./pages/Search";
 import Villes from "./pages/Villes";
+import CurrencyChange from "./pages/CurrencyChange";
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
         <Route path="/article/:idArticle" element={<Articles />} />
         <Route path="/search/*" element={<Search />} />
         <Route path="/ville/:nomVille" element={<Villes />} />
+        <Route path="/TauxDeChange" element={<CurrencyChange />} />
       </Routes>
     </BrowserRouter>
   );

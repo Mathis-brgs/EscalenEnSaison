@@ -114,7 +114,7 @@ const Navigation = () => {
             <NavLink to="/">Conseils Voyageurs</NavLink>
           </li>
           <li className="navbar-items">
-            <NavLink to="/">Taux de changes</NavLink>
+            <NavLink to="/TauxDeChange">Taux de changes</NavLink>
           </li>
           <li className="navbar-items">
             <NavLink to="/">Comparatif de vols</NavLink>
