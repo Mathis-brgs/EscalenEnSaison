@@ -116,9 +116,6 @@ const Navigation = () => {
           <li className="navbar-items">
             <NavLink to="/TauxDeChange">Taux de changes</NavLink>
           </li>
-          <li className="navbar-items">
-            <NavLink to="/">Comparatif de vols</NavLink>
-          </li>
         </ul>
 
         <button className="burger-nav" onClick={handleShowLinks}>
