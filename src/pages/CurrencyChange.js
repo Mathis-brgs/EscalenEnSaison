@@ -71,7 +71,7 @@ const CurrencyChange = () => {
           <div className="result-container">
             <h3 className="result-heading">Résultat de la conversion:</h3>
             <p className="result-text">
-              {amountInEur} EUR équivalent à {convertedValue.toFixed(2)} JPY
+              {amountInEur} EUR équivalent à {convertedValue.toFixed(0)} JPY
             </p>
           </div>
         )}
