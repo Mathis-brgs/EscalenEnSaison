@@ -47,38 +47,38 @@ const Villes = () => {
           <div className="P1">
             <h1>{city.nom}</h1>
             <p className="intro">{city.intro}</p>
-            <h2>{city.titreP1}</h2>
+            <h2>Histoire</h2>
             <p>{city.corps1P1}</p>
             <p>{city.corps2P1}</p>
             <p>{city.corpsP1}</p>
           </div>
 
           <div className="P2">
-            <h2>{city.titreP2}</h2>
+            <h2>Aujourd'hui</h2>
             <p>{city.corps1P2}</p>
             <p>{city.corps2P2}</p>
             <p>{city.corpsP2}</p>
           </div>
 
           <div className="P3">
-            <h2>{city.titreP3}</h2>
+            <h2>Climat</h2>
             <p>{city.corps1P3}</p>
             <p>{city.corps2P3}</p>
             <p>{city.corpsP3}</p>
           </div>
 
           <div className="P4">
-            <h2>{city.titreP4}</h2>
-            <h3>{city.sousTitre1P4}</h3>
+            <h2>Comment s'y rendre</h2>
+            <h3>Par voie aérienne :</h3>
             <p>{city.corps1P4}</p>
             <br />
-            <h3>{city.sousTitre2P4}</h3>
+            <h3>Par voie ferroviaire :</h3>
             <p>{city.corps2P4}</p>
             <p>{city.corpsP4}</p>
           </div>
 
           <div className="P5">
-            <h2>{city.titreP5}</h2>
+            <h2>Comment se déplacer</h2>
             <p>{city.corps1P5}</p>
             <p>{city.corps2P5}</p>
             <p>{city.corpsP5}</p>
