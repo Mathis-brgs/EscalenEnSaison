@@ -59,10 +59,14 @@ const Navigation = () => {
       </NavLink>
 
       <ul className="navigation-links">
-        <li className="fav">
+        
+        <li className="fav-logo">
+        <NavLink to="/fav" >
           <i className="fa-solid fa-heart fa-xl"></i>
+          </NavLink>
         </li>
-
+        
+       
         {!currentUser && (
           <div>
             <li
@@ -108,7 +112,7 @@ const Navigation = () => {
             <NavLink to="/search">Activités</NavLink>
           </li>
           <li className="navbar-items-fav">
-            <NavLink to="/">Favoris</NavLink>
+            <NavLink to="/fav">Favoris</NavLink>
           </li>
           <li className="navbar-items">
             <NavLink to="/">Conseils Voyageurs</NavLink>

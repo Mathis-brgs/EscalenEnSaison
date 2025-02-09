@@ -9,6 +9,7 @@ import Articles from "./pages/Articles";
 import Search from "./pages/Search";
 import Villes from "./pages/Villes";
 import CurrencyChange from "./pages/CurrencyChange";
+import Fav from "./pages/Fav";
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
         <Route path="/search/*" element={<Search />} />
         <Route path="/ville/:nomVille" element={<Villes />} />
         <Route path="/TauxDeChange" element={<CurrencyChange />} />
+        <Route path="/fav" element={<Fav/>} />
       </Routes>
     </BrowserRouter>
   );
