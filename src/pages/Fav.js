@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import Navigation from "../components/Navigation";
+import Footer from "../components/Footer-main";
 import { collection, getDocs, getFirestore } from "firebase/firestore";
 import { initializeApp } from "firebase/app";
 import { auth } from "../firebase/firebase";
@@ -35,7 +37,7 @@ const Fav = () => {
       try {
         const favSnap = await getDocs(favRef);
         const favData = favSnap.docs.map((doc) => doc.data());
-        setFavorites(favData); // Mettre à jour l'état avec les favoris récupérés
+        setFavorites(favData); 
       } catch (error) {
         console.error("Erreur lors de la récupération des favoris :", error);
       } finally {
@@ -43,15 +45,17 @@ const Fav = () => {
       }
     };
 
-    fetchFavorites(); // Appeler la fonction pour récupérer les favoris
-  }, []); // [] signifie que cela s'exécute uniquement au premier rendu
+    fetchFavorites(); 
+  }, []); 
 
   if (loading) {
     return <div>Chargement des favoris...</div>;
   }
 
   return (
-    <div>
+    <div className='fav_page'>
+      <Navigation />
+      <div className='fav_container'>
       <h2>Mes favoris</h2>
       {favorites.length === 0 ? (
         <p>Aucun favori ajouté.</p>
@@ -59,12 +63,14 @@ const Fav = () => {
         <ul>
           {favorites.map((favorite, index) => (
             <li key={index}>
-              {/* Afficher les informations des favoris ici */}
+              
               <span>{favorite.name}</span>
             </li>
           ))}
         </ul>
       )}
+      </div>
+      <Footer />
     </div>
   );
 };

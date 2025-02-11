@@ -4,7 +4,7 @@
   color: $white;
   display: flex;
   position: sticky;
-  top: 0; /* Positionnez la navbar en haut */
+  top: 0; 
   overflow: auto;
   padding: 1rem;
   flex-wrap: wrap;
@@ -123,6 +123,15 @@
   visibility: hidden;
   padding: 1.5rem;
 }
+.fav-logo a {
+  color: white !important; 
+  text-decoration: none;  
+}
+
+.fav-logo a:visited {
+  color: white !important;
+}
+
 .show-nav .navbar-links {
   right: 15px;
   top: 80px;
@@ -202,7 +211,7 @@
     padding: 1rem;
     background-color: black;
   }
-  .fav {
+  .fav-logo {
     visibility: hidden;
     display: none;
   }

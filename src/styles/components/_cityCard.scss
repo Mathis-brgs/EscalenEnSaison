@@ -3,13 +3,13 @@
   grid-template-columns: repeat(
     auto-fit,
     minmax(300px, 1fr)
-  ); /* Colonnes dynamiques avec largeur minimale */
-  gap: 40px; /* Espacement entre les cartes */
-  justify-content: center; /* Centre la grille horizontalement */
-  list-style: none; /* Supprime les puces de liste */
+  ); 
+  gap: 40px; 
+  justify-content: center; 
+  list-style: none;
   padding: 0;
-  margin: 20px auto 40px; /* Centrage horizontal global */
-  max-width: 1000px; /* Largeur maximale pour centrer les lignes globalement */
+  margin: 20px auto 40px; 
+  max-width: 1000px; 
 }
 
 .city-cards li {
@@ -50,7 +50,7 @@
   border-radius: 5px;
 }
 
-/* Responsive Styles */
+
 @media screen and (max-width: 1024px) {
   .city-cards ul {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -90,7 +90,7 @@
 
 @media screen and (max-width: 480px) {
   .city-cards ul {
-    gap: 15px; /* Réduction supplémentaire de l'espacement */
+    gap: 15px;
   }
 
   .cityImg {

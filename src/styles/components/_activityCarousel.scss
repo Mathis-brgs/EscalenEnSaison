@@ -3,51 +3,50 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 55vw; // Utilisation de vw pour garder une taille flexible
-  max-width: 1200px; // Largeur maximale pour éviter un étirement excessif
+  width: 55vw; 
+  max-width: 1200px; 
   height: 10vh;
   background-color: $white;
-  padding: 0 50px; // Ajout d'espace pour les flèches
+  padding: 0 50px;
   border-radius: 40px;
   overflow: hidden;
   position: relative;
-  box-sizing: border-box; // Assure que le padding est inclus dans la largeur totale
+  box-sizing: border-box; 
 }
 
-// Flèches
+
 .carousel-arrow {
   position: absolute;
-  top: 50%; // Centre verticalement
-  transform: translateY(-50%); // Ajustement précis pour centrer
+  top: 50%; 
+  transform: translateY(-50%); 
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: $blue-1;
   color: $white;
   border: none;
-  width: 50px; // Largeur des flèches
-  height: 50px; // Hauteur égale à la largeur pour garder la forme ronde
+  width: 50px; 
+  height: 50px; 
   font-size: 24px;
   cursor: pointer;
 
-  border-radius: 50%; // Forme ronde parfaite
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); // Légère ombre
-  transition: background-color 0.3s; // Transition douce uniquement sur la couleur
-
+  border-radius: 50%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); 
+  transition: background-color 0.3s; 
+}
   &:hover {
-    background-color: darken($blue-1, 10%); // Changement de couleur au survol
+    background-color: darken($blue-1, 10%); 
   }
 
   &.left-arrow {
-    left: 15px; // Positionnement à gauche avec un peu d'espace
-  }
+    left: 15px; 
 
   &.right-arrow {
-    right: 15px; // Positionnement à droite avec un peu d'espace
+    right: 15px; 
   }
 }
 
-// Conteneur des activités
+
 .carousel-container {
   display: flex;
   align-items: center;
@@ -62,13 +61,13 @@
   }
 }
 
-// Élément d'activité
+
 .activity-item {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-width: 100px; // Taille fixe pour les éléments
+  min-width: 100px; 
   color: $blue-1;
   background-color: $white;
   border-radius: 10px;
@@ -86,18 +85,18 @@
   }
 }
 
-// Styles responsive pour les petites tailles d'écran
+
 @media screen and (max-width: 768px) {
   .activity-carousel {
-    width: 80vw; // Plus large sur les petits écrans
-    max-width: 900px; // Limite la largeur pour éviter l'extension excessive
+    width: 80vw; 
+    max-width: 900px; 
     height: 15vh;
-    padding: 0 40px; // Réduit un peu l'espace pour les flèches
+    padding: 0 40px; 
   }
 
   .carousel-arrow {
     width: 45px;
-    height: 45px; // Flèches plus petites
+    height: 45px; 
     font-size: 22px;
   }
 
@@ -110,7 +109,7 @@
   }
 }
 
-// Styles pour les très petites tailles d'écran (smartphones)
+
 @media screen and (max-width: 480px) {
   .activity-carousel {
     left: 25px;
