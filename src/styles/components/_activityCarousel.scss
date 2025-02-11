@@ -33,7 +33,7 @@
   border-radius: 50%;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); 
   transition: background-color 0.3s; 
-}
+
   &:hover {
     background-color: darken($blue-1, 10%); 
   }
@@ -44,6 +44,7 @@
   &.right-arrow {
     right: 15px; 
   }
+}
 }
 
 
