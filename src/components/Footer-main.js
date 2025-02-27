@@ -1,15 +1,23 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 const Footer = () => {
   return (
     //Navlink à rajouter
     <div className="footer-main">
       <ul className="footer-links">
-        <li>Japon</li>
-        <li>Activités</li>
-        <li>Conseils Voyageurs</li>
-        <li>Taux de changes</li>
-        <li>Compartif de vols</li>
+        
+          <NavLink to="/aboutJapan"><li>Japon</li></NavLink>
+        
+        
+          <NavLink to="/search"><li>Activités</li></NavLink>
+          
+        
+          <NavLink to="/"><li>Conseils Voyageurs</li></NavLink>
+       
+        
+          <NavLink to="/TauxDeChange"><li>Taux de changes</li></NavLink>
+        
       </ul>
 
       <div className="separation-white"></div>

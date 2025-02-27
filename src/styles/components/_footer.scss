@@ -4,6 +4,7 @@
   margin-top: 50px;
   color: white;
   font-weight: normal;
+  
 }
 .separation-white {
   content: "";
@@ -12,6 +13,10 @@
   height: 2px;
   margin: 20px 0px;
   background: rgba(255, 255, 255, 0.2);
+}
+.footer-links li {
+  text-decoration: none;
+  color: white;
 }
 
 .footer-main h5 {
